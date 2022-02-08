@@ -10,6 +10,7 @@ $(function () {
   });
   //--------------------клик по одной из функциональных кнопок-----------------------------------------------------------------
   $('.function-button').click(function () {
+    // debugger;
     $('#display').data('operator', $(this).text());
     if (/(-|\/|\+|\*)$/.test($('#display').val())) {
       $('#display').data('valueOne', $('#display').val());
@@ -21,8 +22,8 @@ $(function () {
         let valueB = $('#display').val().split('').splice($('#display').data('valueOne').length + 1, $('#display').val().length).join('');
         $('#display').data('valueTwo', valueB);
         $('.equals-button').click();
-        // $('#display').val($('#display').val())
       } else {
+        $('#display').data('valueOne', $('#display').val());
         $('#display').val($('#display').val() + $(this).text());
       }
     }
@@ -34,29 +35,31 @@ $(function () {
       $('#display').val($('#display').val());
     } else {
       let valueA = $('#display').data('valueOne');
-      if ($('#display').data('valueTwo') == '') {
-        let valueB = $('#display').val().split('').splice($('#display').data('valueOne').length + 1, $('#display').val().length).join('');
-      }
+      let valueB = $('#display').val().split('').splice($('#display').data('valueOne').length + 1, $('#display').val().length).join('');
       let operator = $('#display').data('operator');
-      let result;
+      let result, expression;
       switch (operator) {
         case '+': result = +valueA + +valueB;
+          expression = valueA + '+' + valueB + '=' + result;
           break;
         case '-': result = +valueA - +valueB;
+          expression = valueA + '-' + valueB + '=' + result;
           break;
         case '*': result = +valueA * +valueB;
+          expression = valueA + '*' + valueB + '=' + result;
           break;
         case '/': result = +valueA / +valueB;
+          expression = valueA + '/' + valueB + '=' + result;
           break;
       }
       if (isFinite(result)) {
         $('#display').val(result);
         $('#display').data('valueOne', result);
+        addLog(expression);
       } else {
         $('#display').val("ERROR");
       }
       $('#display').data('condition', true);
-      // resetCalculator();
     }
   });
   //-------------------клик по копке очистки экрана--------------------------------------------------------------------
@@ -70,5 +73,9 @@ $(function () {
     $('#display').data('valueTwo', '');
     $('#display').data('operator', '');
     $('#display').data('condition', false);
+  }
+  //-------------------создаем лог-------------------------------------------------------------------
+  function addLog(expression) {
+    $('.log').append('<div class="log-item"><div class="red-circle"></div><p>' + expression + '<p/><div class="close"></div></div>');
   }
 });

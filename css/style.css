@@ -73,11 +73,6 @@ outline: none;
   width: 15px;
   height: 15px;
   }
-
-.close:before:hover, 
-.close:after:hover {
-    background-color: red;
-}
 .close:before, .close:after {
   position: absolute;
   content: ' ';

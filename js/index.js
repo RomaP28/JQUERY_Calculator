@@ -10,10 +10,9 @@ $(function () {
   });
   //--------------------клик по одной из функциональных кнопок-----------------------------------------------------------------
   $('.function-button').click(function () {
-    // debugger;
+    // debugger
     $('#display').data('operator', $(this).text());
     if (/(-|\/|\+|\*)$/.test($('#display').val())) {
-      $('#display').data('valueOne', $('#display').val());
       let str = $('#display').val();
       str = str.replace(/(-|\/|\+|\*)$/, $(this).text());
       $('#display').val(str);
@@ -30,7 +29,7 @@ $(function () {
   });
   //--------------------клик по кнопке 'равно'------------------------------------------------------------------------
   $('.equals-button').click(function () {
-    // debugger
+    // debugger;
     if (/(-|\/|\+|\*)$/.test($('#display').val())) {
       $('#display').val($('#display').val());
     } else {
@@ -66,6 +65,7 @@ $(function () {
   $('.clear-button').click(function () {
     resetCalculator();
   });
+
   //-------------------состояние программы-------------------------------------------------------------------
   function resetCalculator() {
     $('#display').val('0');
@@ -77,5 +77,7 @@ $(function () {
   //-------------------создаем лог-------------------------------------------------------------------
   function addLog(expression) {
     $('.log').append('<div class="log-item"><div class="red-circle"></div><p>' + expression + '<p/><div class="close"></div></div>');
+    $('.red-circle').click($('.red-circle').css({ 'background': 'red' }))
   }
+
 });

@@ -3,14 +3,11 @@ $(function () {
   //--------------------клик по кнопке с цифрой-----------------------------------------------------------------------
   $('.num-button').click(function () {
     // debugger
-    if ($('#display').val() == '0') {
-      $('#display').val('');
-    } else if ($('#display').data('condition') == true) {
+    if ($('#display').val() == '0' || $('#display').data('condition') == true) {
       $('#display').data('condition', false);
       $('#display').val('');
     }
     $('#display').val($('#display').val() + $(this).text());
-
   });
   //--------------------клик по одной из функциональных кнопок-----------------------------------------------------------------
   $('.function-button').click(function () {
@@ -50,6 +47,7 @@ $(function () {
       }
       if (isFinite(result)) {
         $('#display').val(result);
+        $('#display').data('valueOne', result);
       } else {
         $('#display').val("ERROR");
       }

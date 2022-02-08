@@ -10,42 +10,45 @@
 </head>
 
 <body>
-  <div class="calculator">
-    <div class="header">
-      <input type="text" id="display" placeholder="0" readonly>
+  <div class="wrapper">
+    <div class="calculator">
+      <div class="header">
+        <input type="text" id="display" placeholder="0" readonly>
+      </div>
+      <table class="table" cellspacing="4px">
+        <tr>
+          <td class="disabled"></td>
+          <td class="disabled"></td>
+          <td class="clear-button">C</td>
+          <td class="function-button">/</td>
+        </tr>
+        <tr>
+          <td class="num-button">9</td>
+          <td class="num-button">8</td>
+          <td class="num-button">7</td>
+          <td class="function-button">*</td>
+        </tr>
+        <tr>
+          <td class="num-button">6</td>
+          <td class="num-button">5</td>
+          <td class="num-button">4</td>
+          <td class="function-button">+</td>
+        </tr>
+        <tr>
+          <td class="num-button">3</td>
+          <td class="num-button">2</td>
+          <td class="num-button">1</td>
+          <td class="function-button">-</td>
+        </tr>
+        <tr>
+          <td class="disabled"></td>
+          <td class="num-button">0</td>
+          <td class="disabled"></td>
+          <td class="equals-button">=</td>
+        </tr>
+      </table>
     </div>
-    <table class="table" cellspacing="4px">
-      <tr>
-        <td class="disabled"></td>
-        <td class="disabled"></td>
-        <td class="clear-button">C</td>
-        <td class="function-button">/</td>
-      </tr>
-      <tr>
-        <td class="num-button">9</td>
-        <td class="num-button">8</td>
-        <td class="num-button">7</td>
-        <td class="function-button">*</td>
-      </tr>
-      <tr>
-        <td class="num-button">6</td>
-        <td class="num-button">5</td>
-        <td class="num-button">4</td>
-        <td class="function-button">+</td>
-      </tr>
-      <tr>
-        <td class="num-button">3</td>
-        <td class="num-button">2</td>
-        <td class="num-button">1</td>
-        <td class="function-button">-</td>
-      </tr>
-      <tr>
-        <td class="disabled"></td>
-        <td class="num-button">0</td>
-        <td class="disabled"></td>
-        <td class="equals-button">=</td>
-      </tr>
-    </table>
+    <div class="log"></div>
   </div>
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/index.js"></script>

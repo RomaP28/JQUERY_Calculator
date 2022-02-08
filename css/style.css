@@ -1,3 +1,7 @@
+.wrapper{
+  display: flex;
+  justify-content: space-evenly;
+}
 .calculator{
   width: 300px;
   height: 410px;
@@ -44,5 +48,11 @@ outline: none;
   background-color: #D4E1F1;
 }
 .disabled{
+  background-color: #576886;
+}
+.log{
+  width: 300px;
+  height: 410px;
+  overflow: auto;
   background-color: #576886;
 }

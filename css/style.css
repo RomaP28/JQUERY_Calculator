@@ -1,4 +1,4 @@
-.wrapper{
+.calculator{
   width: 300px;
   height: 410px;
   background-color: #576886;
@@ -15,6 +15,10 @@
   width: 100%;
   height: 22px;
   text-align: right; 
+}
+#display:focus,
+#display:active { 
+outline: none;
 }
 .table{
   width: 75%;

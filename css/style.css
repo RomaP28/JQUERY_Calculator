@@ -96,3 +96,6 @@ outline: none;
 .underline {
   text-decoration: underline;
 }
+.red-background{
+  background: red;
+}

@@ -51,6 +51,7 @@ outline: none;
   background-color: #576886;
 }
 .log{
+  box-sizing: border-box;
   width: 300px;
   height: 410px;
   overflow: auto;
@@ -67,9 +68,12 @@ outline: none;
   border: 1px solid red;
   border-radius: 50%;
 }
+.red-circle:hover{
+  background:red;
+}
 .close {
-  position: absolute;
-  right: 35px;
+  position: absolute; 
+  right: 35px; 
   width: 15px;
   height: 15px;
   }
@@ -85,4 +89,10 @@ outline: none;
 }
 .close:after {
   transform: rotate(-45deg);
+}
+.close:hover:before,.close:hover:after{
+  background: red;
+}
+.underline {
+  text-decoration: underline;
 }

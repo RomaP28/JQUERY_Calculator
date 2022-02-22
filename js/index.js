@@ -2,7 +2,7 @@
 $(function () {
   //--------------------клик по кнопке с цифрой-----------------------------------------------------------------------
   $('.num-button').click(function () {
-    if ($('#display').val() == '0' || $('#display').data('condition') == true) {
+    if ($('#display').val() == '0' || $('#display').data('condition') == true || $('#display').val() == 'ERROR') {
       $('#display').data('condition', false);
       $('#display').val('');
     }
@@ -54,7 +54,7 @@ $(function () {
       if (isFinite(result)) {
         $('#display').val(result);
         $('#display').data('valueOne', result);
-        addLog(expression);
+        addLog(expression, result);
       } else {
         $('#display').val("ERROR");
       }
@@ -69,15 +69,29 @@ $(function () {
   //-------------------состояние программы-------------------------------------------------------------------
   function resetCalculator() {
     $('#display').val('0');
-    $('#display').data('valueOne', '');
-    $('#display').data('valueTwo', '');
+    $('#display').data('valueOne', ''); // храним первый оператор
+    $('#display').data('valueTwo', ''); // храним второй оператор
     $('#display').data('operator', '');
-    $('#display').data('condition', false);
+    $('#display').data('condition', false); //если имеем два оператора на строке то true
   }
   //-------------------создаем лог-------------------------------------------------------------------
-  function addLog(expression) {
-    $('.log').append('<div class="log-item"><div class="red-circle"></div><p>' + expression + '<p/><div class="close"></div></div>');
-    $('.red-circle').click($('.red-circle').css({ 'background': 'red' }))
-  }
+  function addLog(expression, result) {
+    if (expression.includes(48)) {
+      $('.log').prepend('<div class="log-item"><div class="red-circle"></div><p class="underline">' + expression + '<p/><div class="close"></div></div>');
+    } else {
+      $('.log').prepend('<div class="log-item"><div class="red-circle"></div><p>' + expression + '<p/><div class="close"></div></div>');
+    }
+    //-------------------проверяем если есть проокрутка то выводим результат в консоль(по условию в задаче)--------------------------------
+    if ($('.log')[0].scrollHeight > $('.log').innerHeight()) {
+      console.log('Scroll Top: ' + result);
+    }
+    $('.red-circle').click(function () {
+      $(this).css({ 'background': 'red' })
+    });
 
+    $('.close').click(function () {
+      console.log('asdsad');
+      $('.log-item').remove();
+    })
+  };
 });

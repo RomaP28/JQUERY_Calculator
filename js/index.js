@@ -68,30 +68,31 @@ $(function () {
 
   //-------------------состояние программы-------------------------------------------------------------------
   function resetCalculator() {
-    $('#display').val('0');
-    $('#display').data('valueOne', ''); // храним первый оператор
-    $('#display').data('valueTwo', ''); // храним второй оператор
-    $('#display').data('operator', '');
-    $('#display').data('condition', false); //если имеем два оператора на строке то true
+    $('#display').val('0'); // выводим 0
+    $('#display').data('valueOne', ''); // храним первый операнд
+    $('#display').data('valueTwo', ''); // храним второй операнд
+    $('#display').data('operator', ''); // храним оператор
+    $('#display').data('condition', false); //если имеем два операнда на строке то true
   }
   //-------------------создаем лог-------------------------------------------------------------------
   function addLog(expression, result) {
+    //-------------------если выражение содержит 48 то добавляем подчеркивание(по условию в задаче)--------------------------------
     if (expression.includes(48)) {
       $('.log').prepend('<div class="log-item"><div class="red-circle"></div><p class="underline">' + expression + '<p/><div class="close"></div></div>');
     } else {
       $('.log').prepend('<div class="log-item"><div class="red-circle"></div><p>' + expression + '<p/><div class="close"></div></div>');
     }
-    //-------------------проверяем если есть проокрутка то выводим результат в консоль(по условию в задаче)--------------------------------
+    //-------------------проверяем если на прокрутка то выводим результат в консоль(по условию в задаче)--------------------------------
     if ($('.log')[0].scrollHeight > $('.log').innerHeight()) {
       console.log('Scroll Top: ' + result);
     }
+    //-------------------клик по кружку выделяем красным цветом--------------------------------
     $('.red-circle').click(function () {
       $(this).css({ 'background': 'red' })
     });
-
+    //-------------------клик по крестику удаляем запись из лога--------------------------------
     $('.close').click(function () {
-      console.log('asdsad');
-      $('.log-item').remove();
+      $(this).closest('.log-item').remove();
     })
   };
 });

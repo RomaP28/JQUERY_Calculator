@@ -86,14 +86,13 @@ $(function () {
     if ($('.log')[0].scrollHeight > $('.log').innerHeight()) {
       console.log('Scroll Top: ' + result);
     }
-    //-------------------клик по кружку выделяем красным цветом--------------------------------
-    $('.red-circle').click(function () {
-      $(this).toggleClass('red-background');
-      // $(this).css({ 'background': 'red' })
-    });
     //-------------------клик по крестику удаляем запись из лога--------------------------------
     $('.close').click(function () {
       $(this).closest('.log-item').remove();
     })
   };
+  //-------------------клик по кружку выделяем красным цветом--------------------------------
+  $(document).on('click touchstart', '.red-circle', function () {
+    $(this).toggleClass('red-background');
+  });
 });

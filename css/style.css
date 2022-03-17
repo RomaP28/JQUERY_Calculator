@@ -99,3 +99,29 @@ outline: none;
 .red-background{
   background: red;
 }
+
+@media (min-width:391px) and (max-width:827px){
+  .wrapper{
+    display: block;
+  }
+  .calculator, .log{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width:0px) and (max-width:390px){
+  .wrapper{
+    display: block;
+  }
+  .calculator{
+    width: 380px;
+    background-color: #576886;
+    border: 1px solid #576886;
+    border-radius: 0%;
+  }
+  .log{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
